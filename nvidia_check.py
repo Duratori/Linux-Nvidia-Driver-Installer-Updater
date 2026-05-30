@@ -189,9 +189,9 @@ class NvidiaDriverCheck:
         print("⚠️  Driver installation requires root privileges")
         print(f"The installer will run: sudo {driver_path}")
         print()
-        response = input("Proceed with installation? (yes/no): ").strip().lower()
+        response = input("Proceed with installation? [Y/n]: ").strip().lower()
         
-        if response != 'yes':
+        if response not in ('', 'y', 'yes'):
             print("Installation cancelled.")
             return False
         
@@ -251,9 +251,9 @@ class NvidiaDriverCheck:
         
         print(f"Latest available version: {latest_version}")
         print()
-        response = input("Would you like to download and install it? (yes/no): ").strip().lower()
+        response = input("Would you like to download and install it? [Y/n]: ").strip().lower()
         
-        if response != 'yes':
+        if response not in ('', 'y', 'yes'):
             print("Installation cancelled. To install manually, visit:")
             print("https://www.nvidia.com/Download/index.aspx")
             return False
@@ -289,9 +289,9 @@ class NvidiaDriverCheck:
         else:
             print("🆕 A newer driver version is available!")
             print()
-            response = input("Would you like to download and install it? (yes/no): ").strip().lower()
+            response = input("Would you like to download and install it? [Y/n]: ").strip().lower()
             
-            if response == 'yes':
+            if response in ('', 'y', 'yes'):
                 self._download_and_install_driver(latest_version)
             else:
                 print("Update cancelled. To update manually, visit:")
